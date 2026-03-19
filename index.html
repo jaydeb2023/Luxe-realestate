@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VERDANT ESTATES — Premium Real Estate, Kolkata</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --forest:#1C3A2E;
+  --forest-dark:#0E2118;
+  --forest-mid:#2A5040;
+  --brass:#C9955A;
+  --brass-light:#E8B97A;
+  --brass-pale:#F5DDB8;
+  --cream:#FAF7F2;
+  --cream-dark:#F0EBE1;
+  --white:#FFFFFF;
+  --ink:#1A1A1A;
+  --ink-mid:#3D3D3D;
+  --muted:#8A8578;
+  --glass:rgba(201,149,90,0.1);
+  --shadow:0 24px 80px rgba(28,58,46,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--brass);}
+
+/* CURSOR */
+.cur{position:fixed;width:10px;height:10px;background:var(--brass);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .12s;}
+.cur-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--brass);border-radius:50%;pointer-events:none;z-index:99998;transition:all .25s ease;opacity:.5;}
+body:hover .cur,.cur-ring{opacity:1;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 6%;height:80px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav.scrolled{background:rgba(250,247,242,.96);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(201,149,90,.2);}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.logo-mark{width:44px;height:44px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.logo-mark svg{width:24px;height:24px;fill:var(--brass);}
+.logo-words{display:flex;flex-direction:column;line-height:1.1;}
+.logo-words b{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--forest);letter-spacing:3px;}
+.logo-words span{font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;position:relative;transition:color .3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--brass);transition:width .3s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-tel{font-size:12px;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:8px;text-decoration:none;transition:color .3s;}
+.nav-tel:hover{color:var(--brass);}
+.nav-cta{background:var(--forest);color:var(--cream);padding:11px 26px;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+.nav-cta:hover{background:var(--brass);transform:translateY(-1px);}
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger span{width:24px;height:1.5px;background:var(--forest);}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{background:var(--forest-dark);display:flex;flex-direction:column;justify-content:center;padding:140px 8% 80px;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right-img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);animation:heroZoom 12s ease infinite alternate;}
+@keyframes heroZoom{from{transform:scale(1.05);}to{transform:scale(1.12);}}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--forest-dark) 0%,transparent 40%);}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:36px;}
+.hero-tag span{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brass);font-family:'Outfit',sans-serif;}
+.hero-tag::before,.hero-tag::after{content:'';height:1px;width:28px;background:var(--brass);}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6.5vw,90px);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:32px;}
+.hero-h1 em{font-style:italic;color:var(--brass-light);}
+.hero-h1 strong{font-weight:600;display:block;}
+.hero-desc{font-size:15px;color:rgba(250,247,242,.6);line-height:1.9;max-width:420px;margin-bottom:52px;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-forest{background:var(--brass);color:var(--forest-dark);padding:16px 36px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s;display:inline-flex;align-items:center;gap:10px;}
+.btn-forest:hover{background:var(--brass-light);transform:translateY(-2px);box-shadow:0 12px 36px rgba(201,149,90,.35);}
+.btn-outline-light{background:transparent;color:var(--cream);border:1px solid rgba(250,247,242,.3);padding:16px 36px;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s;display:inline-flex;align-items:center;gap:10px;}
+.btn-outline-light:hover{border-color:var(--brass);color:var(--brass);}
+.hero-scroll{position:absolute;bottom:40px;left:8%;display:flex;align-items:center;gap:12px;color:rgba(250,247,242,.4);font-size:10px;letter-spacing:3px;text-transform:uppercase;}
+.hero-scroll-line{width:40px;height:1px;background:rgba(250,247,242,.3);animation:scrollLine 2s ease infinite;}
+@keyframes scrollLine{0%,100%{transform:scaleX(1);}50%{transform:scaleX(.4);transform-origin:left;}}
+.hero-stats-row{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;background:rgba(201,149,90,.08);backdrop-filter:blur(10px);border-top:1px solid rgba(201,149,90,.15);}
+.hstat{flex:1;padding:24px 32px;border-right:1px solid rgba(201,149,90,.15);text-align:center;}
+.hstat:last-child{border-right:none;}
+.hstat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--brass-light);line-height:1;}
+.hstat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(250,247,242,.5);margin-top:4px;}
+
+/* SEARCH BAR */
+.search-section{background:var(--white);padding:0 6%;box-shadow:0 8px 40px rgba(28,58,46,.08);}
+.search-bar{display:flex;align-items:center;gap:0;border:1.5px solid rgba(28,58,46,.12);border-radius:4px;overflow:hidden;background:var(--cream);}
+.search-field{flex:1;display:flex;align-items:center;gap:12px;padding:18px 24px;border-right:1px solid rgba(28,58,46,.1);cursor:pointer;transition:background .2s;}
+.search-field:hover{background:rgba(201,149,90,.05);}
+.search-field i{color:var(--brass);font-size:16px;}
+.search-field-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.search-field-val{font-size:13px;color:var(--ink);font-weight:500;}
+.search-field select{background:transparent;border:none;outline:none;font-family:'Outfit',sans-serif;font-size:13px;color:var(--ink);cursor:pointer;width:100%;}
+.search-field select option{background:var(--cream);}
+.search-go{background:var(--forest);color:var(--cream);border:none;padding:0 40px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background .3s;height:100%;display:flex;align-items:center;gap:10px;min-height:64px;}
+.search-go:hover{background:var(--brass);color:var(--forest-dark);}
+
+/* SECTION COMMONS */
+.sec{padding:110px 6%;}
+.sec-tag{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.sec-tag span{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brass);}
+.sec-tag::before{content:'';width:36px;height:1px;background:var(--brass);}
+.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;color:var(--forest-dark);margin-bottom:18px;}
+.sec-h2 em{font-style:italic;color:var(--brass);}
+.sec-sub{font-size:15px;color:var(--muted);line-height:1.9;max-width:580px;}
+
+/* WHY US */
+#why{background:var(--cream);}
+.why-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:center;margin-top:70px;}
+.why-img-stack{position:relative;height:540px;}
+.why-img-main{position:absolute;left:0;top:0;width:75%;height:420px;object-fit:cover;border-radius:4px;box-shadow:var(--shadow);}
+.why-img-accent{position:absolute;right:0;bottom:0;width:55%;height:280px;object-fit:cover;border-radius:4px;border:6px solid var(--cream);box-shadow:var(--shadow);}
+.why-badge{position:absolute;left:60%;top:50%;transform:translate(-50%,-50%);background:var(--brass);color:var(--forest-dark);padding:22px 26px;border-radius:3px;text-align:center;z-index:5;}
+.why-badge b{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;display:block;line-height:1;}
+.why-badge span{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+.why-card{padding:28px;border:1px solid rgba(28,58,46,.1);border-radius:4px;background:var(--white);transition:all .3s;position:relative;overflow:hidden;}
+.why-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brass);transform:scaleY(0);transform-origin:bottom;transition:transform .3s;}
+.why-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
+.why-card:hover::before{transform:scaleY(1);}
+.why-icon{width:46px;height:46px;background:rgba(201,149,90,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--brass);font-size:20px;margin-bottom:16px;}
+.why-card strong{display:block;font-size:15px;font-weight:600;color:var(--forest);margin-bottom:8px;}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* PROPERTIES */
+#properties{background:var(--forest-dark);position:relative;overflow:hidden;}
+#properties::before{content:'HOMES';position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:200px;font-weight:700;color:rgba(201,149,90,.04);pointer-events:none;white-space:nowrap;}
+#properties .sec-h2{color:var(--cream);}
+#properties .sec-tag span{color:var(--brass-light);}
+#properties .sec-sub{color:rgba(250,247,242,.55);}
+.prop-tabs{display:flex;gap:4px;margin:40px 0 48px;background:rgba(255,255,255,.05);border-radius:4px;padding:4px;width:fit-content;}
+.prop-tab{padding:10px 26px;border-radius:3px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:rgba(250,247,242,.5);transition:all .3s;border:none;background:transparent;font-family:'Outfit',sans-serif;}
+.prop-tab.active{background:var(--brass);color:var(--forest-dark);font-weight:600;}
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.prop-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,149,90,.12);border-radius:8px;overflow:hidden;transition:all .4s;cursor:pointer;}
+.prop-card:hover{transform:translateY(-8px);border-color:rgba(201,149,90,.35);box-shadow:0 32px 80px rgba(0,0,0,.4);}
+.prop-img{height:240px;overflow:hidden;position:relative;}
+.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.prop-card:hover .prop-img img{transform:scale(1.08);}
+.prop-tag{position:absolute;top:16px;left:16px;background:var(--brass);color:var(--forest-dark);padding:5px 14px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;}
+.prop-tag.new{background:#22c55e;color:#fff;}
+.prop-tag.hot{background:#ef4444;color:#fff;}
+.prop-fav{position:absolute;top:16px;right:16px;width:36px;height:36px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8);transition:all .3s;cursor:pointer;border:none;}
+.prop-fav:hover{background:rgba(255,255,255,.3);color:#ef4444;}
+.prop-body{padding:24px;}
+.prop-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--brass-light);margin-bottom:6px;}
+.prop-price span{font-size:13px;color:rgba(250,247,242,.4);font-family:'Outfit',sans-serif;font-weight:400;}
+.prop-name{font-size:16px;font-weight:500;color:var(--cream);margin-bottom:8px;}
+.prop-loc{font-size:12px;color:rgba(250,247,242,.5);display:flex;align-items:center;gap:6px;margin-bottom:18px;}
+.prop-features{display:flex;gap:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06);}
+.prop-feat{display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(250,247,242,.55);}
+.prop-feat i{color:var(--brass);font-size:13px;}
+.prop-cta{display:block;text-align:center;background:transparent;border:1px solid rgba(201,149,90,.3);color:var(--brass-light);padding:12px;border-radius:3px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;margin-top:18px;transition:all .3s;cursor:pointer;font-family:'Outfit',sans-serif;}
+.prop-cta:hover{background:var(--brass);color:var(--forest-dark);}
+
+/* PROCESS */
+#process{background:var(--cream-dark);}
+.process-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:70px;}
+.process-img{border-radius:4px;overflow:hidden;height:560px;}
+.process-img img{width:100%;height:100%;object-fit:cover;}
+.process-steps{display:flex;flex-direction:column;gap:0;}
+.proc-step{display:flex;gap:28px;padding:32px 0;border-bottom:1px solid rgba(28,58,46,.08);position:relative;}
+.proc-step:last-child{border-bottom:none;}
+.proc-num-wrap{display:flex;flex-direction:column;align-items:center;gap:0;}
+.proc-num{width:52px;height:52px;border:2px solid var(--brass);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--brass);flex-shrink:0;}
+.proc-line{width:1px;flex:1;background:rgba(201,149,90,.2);margin:6px 0;}
+.proc-step:last-child .proc-line{display:none;}
+.proc-info{padding-top:10px;}
+.proc-info strong{display:block;font-size:17px;font-weight:600;color:var(--forest);margin-bottom:8px;}
+.proc-info p{font-size:13px;color:var(--muted);line-height:1.8;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--cream);overflow:hidden;}
+.testi-carousel{display:flex;gap:28px;margin-top:60px;overflow:hidden;}
+.testi-track{display:flex;gap:28px;animation:testiSlide 30s linear infinite;}
+.testi-track:hover{animation-play-state:paused;}
+@keyframes testiSlide{to{transform:translateX(-50%);}}
+.testi-card{background:var(--white);border:1px solid rgba(28,58,46,.08);border-radius:8px;padding:36px;min-width:380px;flex-shrink:0;box-shadow:0 4px 24px rgba(28,58,46,.06);transition:all .3s;}
+.testi-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
+.testi-quote{font-size:48px;font-family:'Cormorant Garamond',serif;color:var(--brass);line-height:.8;margin-bottom:16px;}
+.testi-text{font-size:14px;line-height:1.9;color:var(--ink-mid);font-style:italic;margin-bottom:28px;}
+.testi-footer{display:flex;align-items:center;gap:16px;}
+.testi-avatar{width:52px;height:52px;border-radius:50%;overflow:hidden;border:2px solid var(--brass-pale);}
+.testi-avatar img{width:100%;height:100%;object-fit:cover;}
+.testi-name{font-weight:600;font-size:14px;color:var(--forest);}
+.testi-detail{font-size:12px;color:var(--muted);}
+.testi-stars{color:var(--brass);font-size:12px;margin-top:2px;}
+.testi-prop-badge{margin-left:auto;background:rgba(201,149,90,.1);color:var(--brass);padding:6px 14px;border-radius:100px;font-size:11px;font-weight:500;}
+
+/* TEAM */
+#team{background:var(--white);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:60px;}
+.team-card{position:relative;overflow:hidden;border-radius:6px;cursor:pointer;}
+.team-img{height:340px;overflow:hidden;}
+.team-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.team-card:hover .team-img img{transform:scale(1.06);}
+.team-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,33,24,.9) 0%,transparent 60%);opacity:0;transition:opacity .3s;}
+.team-card:hover .team-overlay{opacity:1;}
+.team-info{position:absolute;bottom:0;left:0;right:0;padding:24px;transform:translateY(20px);transition:transform .3s;}
+.team-card:hover .team-info{transform:translateY(0);}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);}
+.team-role{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brass-light);margin-top:4px;}
+.team-socials{display:flex;gap:10px;margin-top:14px;opacity:0;transform:translateY(10px);transition:all .3s .1s;}
+.team-card:hover .team-socials{opacity:1;transform:translateY(0);}
+.team-soc{width:32px;height:32px;background:rgba(201,149,90,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--brass-light);font-size:13px;text-decoration:none;transition:background .2s;}
+.team-soc:hover{background:var(--brass);}
+
+/* MAP + CONTACT */
+#contact{background:var(--cream-dark);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;margin-top:60px;}
+.contact-info{display:flex;flex-direction:column;gap:0;}
+.contact-block{padding:32px 0;border-bottom:1px solid rgba(28,58,46,.1);}
+.contact-block:last-child{border-bottom:none;}
+.cb-icon{width:46px;height:46px;background:var(--glass);border:1px solid rgba(201,149,90,.25);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--brass);font-size:20px;margin-bottom:14px;}
+.cb-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.cb-val{font-size:15px;font-weight:500;color:var(--forest);line-height:1.6;}
+.contact-map{border-radius:8px;overflow:hidden;border:2px solid rgba(28,58,46,.1);box-shadow:var(--shadow);}
+.contact-map iframe{width:100%;height:440px;border:none;filter:contrast(1.1) saturate(.8);}
+.social-row{display:flex;gap:12px;margin-top:32px;}
+.soc-btn{width:48px;height:48px;border:1.5px solid rgba(28,58,46,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:17px;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;}
+.soc-btn::before{content:'';position:absolute;inset:0;background:var(--forest);transform:scaleY(0);transform-origin:bottom;transition:transform .3s;}
+.soc-btn i{position:relative;z-index:1;transition:color .3s;}
+.soc-btn:hover::before{transform:scaleY(1);}
+.soc-btn:hover i{color:var(--cream);}
+
+/* ENQUIRY FORM */
+#enquiry{background:var(--forest);}
+#enquiry .sec-h2{color:var(--cream);}
+#enquiry .sec-tag span{color:var(--brass-light);}
+#enquiry .sec-sub{color:rgba(250,247,242,.55);}
+.enq-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;margin-top:70px;align-items:start;}
+.enq-form-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(201,149,90,.2);border-radius:8px;padding:44px;}
+.enq-form-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--cream);margin-bottom:8px;}
+.enq-form-sub{font-size:13px;color:rgba(250,247,242,.5);margin-bottom:36px;}
+.fg{margin-bottom:22px;}
+.fg label{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(250,247,242,.5);margin-bottom:9px;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:14px 18px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .3s;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.25);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--brass);}
+.fg select{appearance:none;cursor:pointer;}
+.fg select option{background:var(--forest);}
+.fg textarea{resize:vertical;min-height:110px;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.enq-btn{width:100%;background:var(--brass);color:var(--forest-dark);border:none;padding:17px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:6px;font-family:'Outfit',sans-serif;}
+.enq-btn:hover{background:var(--brass-light);transform:translateY(-2px);box-shadow:0 12px 36px rgba(201,149,90,.3);}
+.enq-features{display:flex;flex-direction:column;gap:28px;}
+.enq-feat{display:flex;gap:20px;align-items:flex-start;padding:28px;background:rgba(255,255,255,.04);border-radius:6px;border:1px solid rgba(201,149,90,.1);transition:all .3s;}
+.enq-feat:hover{background:rgba(201,149,90,.06);border-color:rgba(201,149,90,.25);}
+.enq-feat-icon{width:54px;height:54px;background:rgba(201,149,90,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--brass-light);font-size:24px;flex-shrink:0;}
+.enq-feat h4{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:8px;}
+.enq-feat p{font-size:13px;color:rgba(250,247,242,.5);line-height:1.7;}
+
+/* AWARDS / NUMBERS */
+#numbers{background:var(--cream);padding:80px 6%;}
+.numbers-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(28,58,46,.1);border-radius:6px;overflow:hidden;}
+.num-item{padding:48px 24px;text-align:center;border-right:1px solid rgba(28,58,46,.1);background:var(--white);transition:background .3s;}
+.num-item:last-child{border-right:none;}
+.num-item:hover{background:var(--forest);}
+.num-item:hover .num-val{color:var(--brass-light);}
+.num-item:hover .num-label{color:rgba(250,247,242,.6);}
+.num-val{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--forest);line-height:1;transition:color .3s;}
+.num-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-top:8px;transition:color .3s;}
+
+/* FOOTER */
+footer{background:var(--forest-dark);padding:72px 6% 28px;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px;}
+.footer-brand .logo{display:inline-flex;margin-bottom:20px;}
+.footer-brand .logo-words b,.footer-brand .logo-words span{color:var(--cream)!important;}
+.footer-brand .logo-mark{background:var(--brass);}
+.footer-brand .logo-mark svg{fill:var(--forest-dark);}
+.footer-brand p{font-size:13px;color:rgba(250,247,242,.45);line-height:1.9;max-width:290px;margin-bottom:24px;}
+.footer-col h5{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brass-light);margin-bottom:24px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.footer-col ul li a{font-size:13px;color:rgba(250,247,242,.45);text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:8px;}
+.footer-col ul li a::before{content:'→';font-size:11px;opacity:0;transition:all .3s;}
+.footer-col ul li a:hover{color:var(--brass-light);}
+.footer-col ul li a:hover::before{opacity:1;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-bottom p{font-size:12px;color:rgba(250,247,242,.3);}
+.footer-bottom .brass{color:var(--brass);}
+
+/* CHATBOT */
+.chat-fab{position:fixed;bottom:32px;right:32px;z-index:3000;cursor:pointer;}
+.chat-fab-btn{width:62px;height:62px;background:linear-gradient(135deg,var(--forest),var(--forest-mid));border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(28,58,46,.5);transition:transform .3s;position:relative;}
+.chat-fab-btn:hover{transform:scale(1.08);}
+.chat-fab-icon{font-size:26px;}
+.chat-notif{position:absolute;top:-3px;right:-3px;width:20px;height:20px;background:var(--brass);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--forest-dark);animation:notifBounce .7s ease infinite alternate;}
+@keyframes notifBounce{from{transform:translateY(0);}to{transform:translateY(-5px);}}
+.chat-pulse{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(28,58,46,.4);animation:chatPulse 2s ease infinite;}
+@keyframes chatPulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.4);opacity:0;}}
+
+/* Chat Window */
+.chat-win{position:fixed;bottom:110px;right:32px;width:390px;max-height:580px;background:var(--cream);border:1px solid rgba(28,58,46,.15);border-radius:16px;overflow:hidden;z-index:2999;display:none;flex-direction:column;box-shadow:0 32px 80px rgba(28,58,46,.25);}
+.chat-win.open{display:flex;}
+.chat-win-head{background:var(--forest);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;}
+.cwh-left{display:flex;align-items:center;gap:14px;}
+.cwh-av{width:44px;height:44px;background:rgba(201,149,90,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.cwh-name{font-weight:600;font-size:14px;color:var(--cream);}
+.cwh-status{font-size:11px;color:rgba(250,247,242,.6);display:flex;align-items:center;gap:6px;}
+.cwh-status::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block;}
+.cwh-close{background:rgba(255,255,255,.1);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;color:rgba(250,247,242,.7);font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.cwh-close:hover{background:rgba(255,255,255,.2);}
+.chat-msgs{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;max-height:360px;background:var(--cream);}
+.chat-msgs::-webkit-scrollbar{width:3px;}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--brass-pale);}
+.cmsg{display:flex;gap:10px;align-items:flex-end;animation:msgPop .3s ease;}
+@keyframes msgPop{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.cmsg.bot{flex-direction:row;}
+.cmsg.user{flex-direction:row-reverse;}
+.cmsg-av{width:30px;height:30px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.cmsg-bub{max-width:280px;padding:12px 16px;border-radius:14px;font-size:13px;line-height:1.6;}
+.cmsg.bot .cmsg-bub{background:var(--white);border:1px solid rgba(28,58,46,.1);border-bottom-left-radius:3px;color:var(--ink);}
+.cmsg.user .cmsg-bub{background:var(--forest);color:var(--cream);border-bottom-right-radius:3px;}
+.chat-qr{padding:12px 18px;display:flex;gap:8px;flex-wrap:wrap;background:var(--white);border-top:1px solid rgba(28,58,46,.07);}
+.cqr-btn{background:rgba(28,58,46,.06);border:1px solid rgba(28,58,46,.15);color:var(--forest);padding:7px 14px;border-radius:100px;font-size:11px;cursor:pointer;transition:all .3s;font-family:'Outfit',sans-serif;}
+.cqr-btn:hover{background:var(--forest);color:var(--cream);}
+.chat-inp-area{padding:14px 18px;border-top:1px solid rgba(28,58,46,.08);display:flex;gap:10px;background:var(--cream);}
+.chat-inp{flex:1;background:var(--white);border:1px solid rgba(28,58,46,.15);border-radius:100px;padding:11px 18px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:13px;outline:none;transition:border-color .3s;}
+.chat-inp:focus{border-color:var(--forest);}
+.chat-inp-btn{width:42px;height:42px;background:var(--forest);border:none;border-radius:50%;cursor:pointer;color:var(--cream);font-size:15px;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.chat-inp-btn:hover{background:var(--brass);}
+.typing-ind{display:flex;gap:4px;padding:12px 16px;align-items:center;}
+.tdot{width:7px;height:7px;background:var(--brass);border-radius:50%;animation:tdot 1.2s ease infinite;}
+.tdot:nth-child(2){animation-delay:.2s;}
+.tdot:nth-child(3){animation-delay:.4s;}
+@keyframes tdot{0%,100%{opacity:.3;transform:translateY(0);}50%{opacity:1;transform:translateY(-5px);}}
+
+/* WA button */
+.wa-fixed{position:fixed;bottom:32px;left:32px;z-index:3000;}
+.wa-btn{width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:transform .3s;}
+.wa-btn:hover{transform:scale(1.1);}
+
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(14,33,24,.85);z-index:5000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
+.modal-ov.open{display:flex;}
+.modal-box{background:var(--cream);border-radius:10px;width:90%;max-width:560px;max-height:90vh;overflow-y:auto;padding:52px;position:relative;}
+.modal-close{position:absolute;top:20px;right:20px;background:rgba(28,58,46,.1);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;color:var(--ink);font-size:16px;display:flex;align-items:center;justify-content:center;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:var(--forest);margin-bottom:6px;}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:32px;}
+.modal-box .fg label{color:var(--muted);}
+.modal-box .fg input,.modal-box .fg select,.modal-box .fg textarea{background:var(--white);color:var(--ink);border-color:rgba(28,58,46,.15);}
+.modal-box .fg input:focus,.modal-box .fg select:focus{border-color:var(--forest);}
+.modal-submit{width:100%;background:var(--forest);color:var(--cream);border:none;padding:16px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:all .3s;font-family:'Outfit',sans-serif;}
+.modal-submit:hover{background:var(--brass);color:var(--forest-dark);}
+
+/* TOAST */
+#toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(40px);background:var(--forest);color:var(--cream);padding:16px 36px;border-radius:100px;font-size:13px;z-index:9999;opacity:0;transition:all .4s;border:1px solid rgba(201,149,90,.3);pointer-events:none;}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(36px);transition:all .8s ease;}
+.rev-l{opacity:0;transform:translateX(-36px);transition:all .8s ease;}
+.rev-r{opacity:0;transform:translateX(36px);transition:all .8s ease;}
+.rev.in,.rev-l.in,.rev-r.in{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){#hero{grid-template-columns:1fr;}.hero-right{display:none;}.why-grid,.process-layout,.enq-grid,.contact-wrap{grid-template-columns:1fr;gap:48px;}.props-grid{grid-template-columns:1fr 1fr;}.team-grid{grid-template-columns:1fr 1fr;}.footer-top{grid-template-columns:1fr 1fr;}.numbers-row{grid-template-columns:repeat(3,1fr);}.num-item:nth-child(3){border-right:none;}.num-item:nth-child(4){border-top:1px solid rgba(28,58,46,.1);}}
+@media(max-width:768px){.nav-links,.nav-tel{display:none;}.hamburger{display:flex;}.hero-left{padding:120px 6% 100px;}.props-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr;}.numbers-row{grid-template-columns:1fr 1fr;}.footer-top{grid-template-columns:1fr;}.chat-win{width:calc(100vw - 32px);right:16px;}.search-bar{flex-direction:column;}.search-field{border-right:none;border-bottom:1px solid rgba(28,58,46,.1);}.fg-row{grid-template-columns:1fr;}.modal-box{padding:28px;}}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919876543210?text=Hi%20Verdant%20Estates!%20I%20am%20looking%20for%20a%20property%20in%20Kolkata." target="_blank" class="wa-fixed"><div class="wa-btn"><i class="fab fa-whatsapp"></i></div></a>
+
+<!-- CHATBOT FAB -->
+<div class="chat-fab" id="chatFab">
+  <div class="chat-fab-btn">
+    <div class="chat-pulse"></div>
+    <div class="chat-fab-icon">🏡</div>
+  </div>
+  <div class="chat-notif">1</div>
+</div>
+
+<!-- CHAT WINDOW -->
+<div class="chat-win" id="chatWin">
+  <div class="chat-win-head">
+    <div class="cwh-left">
+      <div class="cwh-av">🤖</div>
+      <div>
+        <div class="cwh-name">Verdant AI Assistant</div>
+        <div class="cwh-status">Online · Here to Help</div>
+      </div>
+    </div>
+    <button class="cwh-close" id="cwClose">✕</button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="cmsg bot">
+      <div class="cmsg-av">🏡</div>
+      <div class="cmsg-bub">Welcome to <strong>Verdant Estates</strong>! 🌿 I can help you find your dream home in Kolkata, check property details, book site visits, or answer any questions!</div>
+    </div>
+  </div>
+  <div class="chat-qr" id="chatQR">
+    <button class="cqr-btn" onclick="qSend('Properties Available')">🏠 Properties</button>
+    <button class="cqr-btn" onclick="qSend('Book Site Visit')">📅 Site Visit</button>
+    <button class="cqr-btn" onclick="qSend('Price Range')">💰 Pricing</button>
+    <button class="cqr-btn" onclick="qSend('Home Loan')">🏦 Loan Help</button>
+  </div>
+  <div class="chat-inp-area">
+    <input class="chat-inp" id="chatInp" placeholder="Ask about any property..." onkeydown="if(event.key==='Enter')cSend()">
+    <button class="chat-inp-btn" onclick="cSend()">➤</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg>
+    </div>
+    <div class="logo-words">
+      <b>VERDANT</b>
+      <span>Estates · Kolkata</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#team">Our Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+919876543210" class="nav-tel"><i class="fas fa-phone" style="color:var(--brass);"></i> +91 98765 43210</a>
+    <a href="#enquiry" class="nav-cta">Book a Visit</a>
+  </div>
+  <div class="hamburger" onclick="mobileNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span>Kolkata's Premium Real Estate</span></div>
+    <h1 class="hero-h1">Find Your<br><em>Perfect</em><br><strong>Home.</strong></h1>
+    <p class="hero-desc">Curated luxury residences, smart apartments, and commercial spaces across Kolkata's most desirable neighbourhoods. Your dream address awaits.</p>
+    <div class="hero-btns">
+      <a href="#properties" class="btn-forest"><i class="fas fa-search"></i> Explore Properties</a>
+      <a href="#enquiry" class="btn-outline-light"><i class="fas fa-calendar"></i> Book Free Site Visit</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll to explore</div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=80" alt="Luxury Home Kolkata">
+  </div>
+  <div class="hero-stats-row">
+    <div class="hstat"><div class="hstat-num">1,240+</div><div class="hstat-label">Happy Families</div></div>
+    <div class="hstat"><div class="hstat-num">380+</div><div class="hstat-label">Properties Sold</div></div>
+    <div class="hstat"><div class="hstat-num">15+</div><div class="hstat-label">Years Trusted</div></div>
+    <div class="hstat"><div class="hstat-num">98%</div><div class="hstat-label">Client Satisfaction</div></div>
+    <div class="hstat"><div class="hstat-num">12</div><div class="hstat-label">Prime Locations</div></div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-bar">
+    <div class="search-field"><i class="fas fa-map-marker-alt"></i><div><span class="search-field-label">Location</span><select><option>All Kolkata</option><option>Salt Lake</option><option>New Town</option><option>Park Street</option><option>Alipore</option><option>Ballygunge</option><option>Rajarhat</option></select></div></div>
+    <div class="search-field"><i class="fas fa-home"></i><div><span class="search-field-label">Property Type</span><select><option>All Types</option><option>Apartment</option><option>Villa</option><option>Duplex</option><option>Penthouse</option><option>Commercial</option></select></div></div>
+    <div class="search-field"><i class="fas fa-rupee-sign"></i><div><span class="search-field-label">Budget</span><select><option>Any Budget</option><option>Under ₹50L</option><option>₹50L – ₹1Cr</option><option>₹1Cr – ₹2Cr</option><option>₹2Cr+</option></select></div></div>
+    <div class="search-field"><i class="fas fa-bed"></i><div><span class="search-field-label">Bedrooms</span><select><option>Any</option><option>1 BHK</option><option>2 BHK</option><option>3 BHK</option><option>4+ BHK</option></select></div></div>
+    <button class="search-go" onclick="showToast('Searching properties...')"><i class="fas fa-search"></i> Search</button>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section id="why" class="sec">
+  <div class="sec-tag"><span>Our Promise</span></div>
+  <div class="why-grid">
+    <div class="why-img-stack rev-l">
+      <img class="why-img-main" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80" alt="Luxury Interior">
+      <img class="why-img-accent" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="Beautiful Home">
+      <div class="why-badge"><b>15+</b><span>Years of Trust</span></div>
+    </div>
+    <div class="rev-r">
+      <h2 class="sec-h2">Why Kolkata Trusts<br><em>Verdant Estates</em></h2>
+      <p class="sec-sub">We don't just sell properties — we match families with their forever homes. Every listing is personally verified, every deal is transparently handled.</p>
+      <div class="why-cards">
+        <div class="why-card"><div class="why-icon"><i class="fas fa-shield-alt"></i></div><strong>Zero Hidden Fees</strong><p>Complete transparency in pricing. What you see is exactly what you pay.</p></div>
+        <div class="why-card"><div class="why-icon"><i class="fas fa-certificate"></i></div><strong>Legal Verified</strong><p>Every property has clear title, RERA compliance & full legal documentation.</p></div>
+        <div class="why-card"><div class="why-icon"><i class="fas fa-handshake"></i></div><strong>Best Price Match</strong><p>We negotiate the best deal on your behalf. Your interest is our priority.</p></div>
+        <div class="why-card"><div class="why-icon"><i class="fas fa-headset"></i></div><strong>24/7 Support</strong><p>Our property experts are available round the clock to assist you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties" class="sec">
+  <div class="sec-tag"><span>Featured Listings</span></div>
+  <h2 class="sec-h2">Homes Crafted for<br><em>Extraordinary Lives</em></h2>
+  <p class="sec-sub">Hand-picked premium properties across Kolkata's finest addresses.</p>
+  <div class="prop-tabs">
+    <button class="prop-tab active" onclick="filterTab(this,'all')">All</button>
+    <button class="prop-tab" onclick="filterTab(this,'buy')">Buy</button>
+    <button class="prop-tab" onclick="filterTab(this,'rent')">Rent</button>
+    <button class="prop-tab" onclick="filterTab(this,'new')">New Launch</button>
+  </div>
+  <div class="props-grid">
+    <div class="prop-card rev">
+      <div class="prop-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=80" alt="Luxury Apartment Salt Lake"><div class="prop-tag hot">🔥 Hot</div><button class="prop-fav"><i class="far fa-heart"></i></button></div>
+      <div class="prop-body">
+        <div class="prop-price">₹1.85 Cr <span>onwards</span></div>
+        <div class="prop-name">Verdant Sky Residences</div>
+        <div class="prop-loc"><i class="fas fa-map-marker-alt" style="color:var(--brass-light);"></i> Sector V, Salt Lake City</div>
+        <div class="prop-features"><div class="prop-feat"><i class="fas fa-bed"></i> 3 BHK</div><div class="prop-feat"><i class="fas fa-bath"></i> 3 Bath</div><div class="prop-feat"><i class="fas fa-ruler-combined"></i> 1,850 sq.ft</div></div>
+        <button class="prop-cta" onclick="openModal('Verdant Sky Residences')">Schedule Visit →</button>
+      </div>
+    </div>
+    <div class="prop-card rev">
+      <div class="prop-img"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80" alt="Villa Alipore"><div class="prop-tag new">✨ New</div><button class="prop-fav"><i class="far fa-heart"></i></button></div>
+      <div class="prop-body">
+        <div class="prop-price">₹4.20 Cr <span>onwards</span></div>
+        <div class="prop-name">The Alipore Heritage Villa</div>
+        <div class="prop-loc"><i class="fas fa-map-marker-alt" style="color:var(--brass-light);"></i> Alipore, South Kolkata</div>
+        <div class="prop-features"><div class="prop-feat"><i class="fas fa-bed"></i> 4 BHK</div><div class="prop-feat"><i class="fas fa-bath"></i> 4 Bath</div><div class="prop-feat"><i class="fas fa-ruler-combined"></i> 3,400 sq.ft</div></div>
+        <button class="prop-cta" onclick="openModal('The Alipore Heritage Villa')">Schedule Visit →</button>
+      </div>
+    </div>
+    <div class="prop-card rev">
+      <div class="prop-img"><img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=700&q=80" alt="New Town Apartment"><div class="prop-tag">Ready To Move</div><button class="prop-fav"><i class="far fa-heart"></i></button></div>
+      <div class="prop-body">
+        <div class="prop-price">₹78 L <span>onwards</span></div>
+        <div class="prop-name">New Town Smart Homes</div>
+        <div class="prop-loc"><i class="fas fa-map-marker-alt" style="color:var(--brass-light);"></i> Action Area II, New Town</div>
+        <div class="prop-features"><div class="prop-feat"><i class="fas fa-bed"></i> 2 BHK</div><div class="prop-feat"><i class="fas fa-bath"></i> 2 Bath</div><div class="prop-feat"><i class="fas fa-ruler-combined"></i> 980 sq.ft</div></div>
+        <button class="prop-cta" onclick="openModal('New Town Smart Homes')">Schedule Visit →</button>
+      </div>
+    </div>
+    <div class="prop-card rev">
+      <div class="prop-img"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700&q=80" alt="Penthouse Rajarhat"><div class="prop-tag hot">Penthouse</div><button class="prop-fav"><i class="far fa-heart"></i></button></div>
+      <div class="prop-body">
+        <div class="prop-price">₹3.60 Cr <span>onwards</span></div>
+        <div class="prop-name">Rajarhat Sky Penthouse</div>
+        <div class="prop-loc"><i class="fas fa-map-marker-alt" style="color:var(--brass-light);"></i> Rajarhat, North Kolkata</div>
+        <div class="prop-features"><div class="prop-feat"><i class="fas fa-bed"></i> 4 BHK</div><div class="prop-feat"><i class="fas fa-bath"></i> 5 Bath</div><div class="prop-feat"><i class="fas fa-ruler-combined"></i> 4,200 sq.ft</div></div>
+        <button class="prop-cta" onclick="openModal('Rajarhat Sky Penthouse')">Schedule Visit →</button>
+      </div>
+    </div>
+    <div class="prop-card rev">
+      <div class="prop-img"><img src="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=700&q=80" alt="Ballygunge"><div class="prop-tag new">✨ New</div><button class="prop-fav"><i class="far fa-heart"></i></button></div>
+      <div class="prop-body">
+        <div class="prop-price">₹1.20 Cr <span>onwards</span></div>
+        <div class="prop-name">Ballygunge Luxury Flats</div>
+        <div class="prop-loc"><i class="fas fa-map-marker-alt" style="color:var(--brass-light);"></i> Ballygunge, Kolkata</div>
+        <div class="prop-features"><div class="prop-feat"><i class="fas fa-bed"></i> 3 BHK</div><div class="prop-feat"><i class="fas fa-bath"></i> 2 Bath</div><div class="prop-feat"><i class="fas fa-ruler-combined"></i> 1,450 sq.ft</div></div>
+        <button class="prop-cta" onclick="openModal('Ballygunge Luxury Flats')">Schedule Visit →</button>
+      </div>
+    </div>
+    <div class="prop-card rev">
+      <div class="prop-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Commercial Park Street"><div class="prop-tag" style="background:var(--forest-mid);">Commercial</div><button class="prop-fav"><i class="far fa-heart"></i></button></div>
+      <div class="prop-body">
+        <div class="prop-price">₹2.90 Cr <span>onwards</span></div>
+        <div class="prop-name">Park Street Business Hub</div>
+        <div class="prop-loc"><i class="fas fa-map-marker-alt" style="color:var(--brass-light);"></i> Park Street, Central Kolkata</div>
+        <div class="prop-features"><div class="prop-feat"><i class="fas fa-building"></i> Office</div><div class="prop-feat"><i class="fas fa-ruler-combined"></i> 2,200 sq.ft</div><div class="prop-feat"><i class="fas fa-parking"></i> 3 Parking</div></div>
+        <button class="prop-cta" onclick="openModal('Park Street Business Hub')">Schedule Visit →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div id="numbers">
+  <div class="numbers-row">
+    <div class="num-item"><div class="num-val">1240+</div><div class="num-label">Happy Clients</div></div>
+    <div class="num-item"><div class="num-val">380+</div><div class="num-label">Deals Closed</div></div>
+    <div class="num-item"><div class="num-val">₹850Cr+</div><div class="num-label">Property Value Sold</div></div>
+    <div class="num-item"><div class="num-val">12</div><div class="num-label">Prime Locations</div></div>
+    <div class="num-item"><div class="num-val">98%</div><div class="num-label">Client Satisfaction</div></div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section id="process" class="sec">
+  <div class="sec-tag"><span>How It Works</span></div>
+  <div class="process-layout">
+    <div class="process-img rev-l"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=800&q=80" alt="Property Consultation"></div>
+    <div class="rev-r">
+      <h2 class="sec-h2">Your Journey to<br><em>Dream Home</em><br>in 5 Simple Steps</h2>
+      <p class="sec-sub" style="margin-bottom:40px;">We handle all the complexity — you just pick your home and move in.</p>
+      <div class="process-steps">
+        <div class="proc-step"><div class="proc-num-wrap"><div class="proc-num">01</div><div class="proc-line"></div></div><div class="proc-info"><strong>Free Consultation</strong><p>Share your requirements, budget, and preferred locations with our experts.</p></div></div>
+        <div class="proc-step"><div class="proc-num-wrap"><div class="proc-num">02</div><div class="proc-line"></div></div><div class="proc-info"><strong>Curated Property Shortlist</strong><p>We handpick the best matching properties and share detailed reports.</p></div></div>
+        <div class="proc-step"><div class="proc-num-wrap"><div class="proc-num">03</div><div class="proc-line"></div></div><div class="proc-info"><strong>Guided Site Visits</strong><p>Personal guided tours with our property expert at your convenience.</p></div></div>
+        <div class="proc-step"><div class="proc-num-wrap"><div class="proc-num">04</div><div class="proc-line"></div></div><div class="proc-info"><strong>Legal & Loan Assistance</strong><p>We handle all paperwork and connect you with the best home loan options.</p></div></div>
+        <div class="proc-step"><div class="proc-num-wrap"><div class="proc-num">05</div></div><div class="proc-info"><strong>Keys Handover 🎉</strong><p>Celebrate your new home! We stay in touch for any post-purchase support.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="sec" style="padding-bottom:0;">
+  <div class="sec-tag"><span>Happy Clients</span></div>
+  <h2 class="sec-h2">Stories of <em>Happy Homeowners</em></h2>
+</section>
+<div style="padding:0 0 110px;overflow:hidden;">
+  <div class="testi-carousel">
+    <div class="testi-track">
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"Verdant Estates made buying our first home the most joyful experience. Zero stress, total transparency. Our agent was like family by the end!"</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100&q=80" alt="Ritika Sen"></div><div><div class="testi-name">Ritika & Arjun Sen</div><div class="testi-detail">3 BHK, Salt Lake</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">Bought 2024</div></div></div>
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"I was relocating from Mumbai and was totally new to Kolkata's property market. Verdant's team guided me through everything — found my perfect flat in 3 weeks!"</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Vikram Mehta"></div><div><div class="testi-name">Vikram Mehta</div><div class="testi-detail">2 BHK, New Town</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">Bought 2023</div></div></div>
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"The team helped me sell my old flat and buy a new villa — all within 6 weeks! Their negotiation skills saved me ₹18 lakhs. Absolutely phenomenal service!"</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Priya Ghosh"></div><div><div class="testi-name">Priya Ghosh</div><div class="testi-detail">Villa, Alipore</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">Sold + Bought</div></div></div>
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"As an NRI investing in Kolkata, I needed a trustworthy partner. Verdant handled EVERYTHING remotely. Legal docs, site visits, everything. Pure professionalism."</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Rahul Nair"></div><div><div class="testi-name">Rahul Nair</div><div class="testi-detail">Penthouse, Rajarhat</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">NRI Client</div></div></div>
+      <!-- duplicate for infinite loop -->
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"Verdant Estates made buying our first home the most joyful experience. Zero stress, total transparency. Our agent was like family by the end!"</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100&q=80" alt="Ritika Sen"></div><div><div class="testi-name">Ritika & Arjun Sen</div><div class="testi-detail">3 BHK, Salt Lake</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">Bought 2024</div></div></div>
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"I was relocating from Mumbai and was totally new to Kolkata's property market. Verdant's team guided me through everything — found my perfect flat in 3 weeks!"</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Vikram Mehta"></div><div><div class="testi-name">Vikram Mehta</div><div class="testi-detail">2 BHK, New Town</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">Bought 2023</div></div></div>
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"The team helped me sell my old flat and buy a new villa — all within 6 weeks! Their negotiation skills saved me ₹18 lakhs. Absolutely phenomenal service!"</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Priya Ghosh"></div><div><div class="testi-name">Priya Ghosh</div><div class="testi-detail">Villa, Alipore</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">Sold + Bought</div></div></div>
+      <div class="testi-card"><div class="testi-quote">❝</div><div class="testi-text">"As an NRI investing in Kolkata, I needed a trustworthy partner. Verdant handled EVERYTHING remotely. Legal docs, site visits, everything. Pure professionalism."</div><div class="testi-footer"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Rahul Nair"></div><div><div class="testi-name">Rahul Nair</div><div class="testi-detail">Penthouse, Rajarhat</div><div class="testi-stars">★★★★★</div></div><div class="testi-prop-badge">NRI Client</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section id="team" class="sec">
+  <div class="sec-tag"><span>Our Experts</span></div>
+  <h2 class="sec-h2">Meet the People Who<br><em>Find You Homes</em></h2>
+  <p class="sec-sub">Experienced, empathetic, and deeply rooted in Kolkata's real estate landscape.</p>
+  <div class="team-grid">
+    <div class="team-card rev"><div class="team-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80" alt="Ananya Roy"></div><div class="team-overlay"></div><div class="team-info"><div class="team-name">Ananya Roy</div><div class="team-role">Managing Director</div><div class="team-socials"><a href="#" class="team-soc"><i class="fab fa-linkedin-in"></i></a><a href="#" class="team-soc"><i class="fab fa-instagram"></i></a></div></div></div>
+    <div class="team-card rev"><div class="team-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Debashish Mitra"></div><div class="team-overlay"></div><div class="team-info"><div class="team-name">Debashish Mitra</div><div class="team-role">Senior Property Advisor</div><div class="team-socials"><a href="#" class="team-soc"><i class="fab fa-linkedin-in"></i></a><a href="#" class="team-soc"><i class="fab fa-instagram"></i></a></div></div></div>
+    <div class="team-card rev"><div class="team-img"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&q=80" alt="Shalini Bose"></div><div class="team-overlay"></div><div class="team-info"><div class="team-name">Shalini Bose</div><div class="team-role">Legal & Documentation Head</div><div class="team-socials"><a href="#" class="team-soc"><i class="fab fa-linkedin-in"></i></a><a href="#" class="team-soc"><i class="fab fa-instagram"></i></a></div></div></div>
+    <div class="team-card rev"><div class="team-img"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80" alt="Raj Chatterjee"></div><div class="team-overlay"></div><div class="team-info"><div class="team-name">Raj Chatterjee</div><div class="team-role">Investment & NRI Specialist</div><div class="team-socials"><a href="#" class="team-soc"><i class="fab fa-linkedin-in"></i></a><a href="#" class="team-soc"><i class="fab fa-instagram"></i></a></div></div></div>
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section id="enquiry" class="sec">
+  <div class="sec-tag"><span>Get In Touch</span></div>
+  <h2 class="sec-h2">Ready to Find<br>Your <em>Dream Home?</em></h2>
+  <p class="sec-sub">Fill in your details and a dedicated property advisor will call you within 2 hours.</p>
+  <div class="enq-grid">
+    <div class="enq-form-wrap rev-l">
+      <div class="enq-form-title">Book a Free Consultation</div>
+      <div class="enq-form-sub">No obligations. No spam. Just expert guidance.</div>
+      <div class="fg"><label>Your Full Name</label><input type="text" placeholder="Enter your name"></div>
+      <div class="fg-row">
+        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Property Type</label><select><option>Select type</option><option>Apartment / Flat</option><option>Villa / Bungalow</option><option>Penthouse</option><option>Commercial</option><option>Plot</option></select></div>
+        <div class="fg"><label>Budget Range</label><select><option>Select budget</option><option>Under ₹50L</option><option>₹50L – ₹1Cr</option><option>₹1Cr – ₹2Cr</option><option>₹2Cr – ₹5Cr</option><option>₹5Cr+</option></select></div>
+      </div>
+      <div class="fg"><label>Preferred Location in Kolkata</label><select><option>Any Location</option><option>Salt Lake</option><option>New Town / Rajarhat</option><option>Alipore</option><option>Ballygunge</option><option>Park Street</option><option>Behala</option><option>Dum Dum</option></select></div>
+      <div class="fg"><label>Message or Special Requirements</label><textarea placeholder="Tell us what you're looking for — number of BHKs, amenities, etc."></textarea></div>
+      <button class="enq-btn" onclick="showToast('✓ We will call you within 2 hours!')">Book My Free Consultation 🏡</button>
+    </div>
+    <div class="rev-r">
+      <div class="enq-features">
+        <div class="enq-feat"><div class="enq-feat-icon"><i class="fas fa-home"></i></div><div><h4>Free Site Visits</h4><p>We organise personal guided tours to your shortlisted properties at your preferred time.</p></div></div>
+        <div class="enq-feat"><div class="enq-feat-icon"><i class="fas fa-file-contract"></i></div><div><h4>Legal Assistance</h4><p>Our in-house legal team reviews all documents and ensures a smooth, risk-free transaction.</p></div></div>
+        <div class="enq-feat"><div class="enq-feat-icon"><i class="fas fa-university"></i></div><div><h4>Home Loan Support</h4><p>Get pre-approved home loans from top banks at the best interest rates through our network.</p></div></div>
+        <div class="enq-feat"><div class="enq-feat-icon"><i class="fas fa-rupee-sign"></i></div><div><h4>Best Price Guarantee</h4><p>Our negotiation experts ensure you always get the best possible price on your dream home.</p></div></div>
+        <div class="enq-feat"><div class="enq-feat-icon"><i class="fas fa-globe"></i></div><div><h4>NRI Property Services</h4><p>Complete remote property purchase management for Indians living abroad — 100% hassle-free.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / MAP -->
+<section id="contact" class="sec" style="background:var(--cream-dark);">
+  <div class="sec-tag"><span>Visit Our Office</span></div>
+  <h2 class="sec-h2" style="color:var(--forest-dark);">Find <em>Us</em></h2>
+  <div class="contact-wrap">
+    <div class="contact-info rev-l">
+      <div class="contact-block"><div class="cb-icon"><i class="fas fa-map-marker-alt"></i></div><div class="cb-label">Head Office</div><div class="cb-val">22 Shakespeare Sarani, 3rd Floor<br>Near Park Street, Kolkata – 700071<br>West Bengal, India</div></div>
+      <div class="contact-block"><div class="cb-icon"><i class="fas fa-phone-alt"></i></div><div class="cb-label">Call / WhatsApp</div><div class="cb-val">+91 98765 43210<br>+91 033 4025 8899</div></div>
+      <div class="contact-block"><div class="cb-icon"><i class="fas fa-envelope-open-text"></i></div><div class="cb-label">Email</div><div class="cb-val">homes@verdantestates.com<br>nri@verdantestates.com</div></div>
+      <div class="contact-block"><div class="cb-icon"><i class="fas fa-clock"></i></div><div class="cb-label">Office Hours</div><div class="cb-val">Mon – Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 5:00 PM</div></div>
+      <div class="social-row">
+        <a href="#" class="soc-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="soc-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="soc-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="soc-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="soc-btn" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://wa.me/919876543210" class="soc-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="soc-btn" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+      </div>
+    </div>
+    <div class="contact-map rev-r">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.356063937716!2d88.35068491495773!3d22.557167985182614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02772e93c30001%3A0x2adf0c6e57f36668!2sPark%20Street%2C%20Kolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#hero" class="logo"><div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg></div><div class="logo-words"><b>VERDANT</b><span>Estates · Kolkata</span></div></a>
+      <p>Kolkata's most trusted real estate partner since 2009. We believe everyone deserves a home they love — and we'll help you find it.</p>
+      <div class="social-row">
+        <a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="soc-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="soc-btn"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Properties</h5><ul><li><a href="#">Buy Apartment</a></li><li><a href="#">Rent Flat</a></li><li><a href="#">Luxury Villas</a></li><li><a href="#">New Launches</a></li><li><a href="#">Commercial Space</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="#why">About Verdant</a></li><li><a href="#team">Our Team</a></li><li><a href="#testimonials">Client Stories</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li></ul></div>
+    <div class="footer-col"><h5>Support</h5><ul><li><a href="tel:+919876543210">+91 98765 43210</a></li><li><a href="mailto:homes@verdantestates.com">Email Us</a></li><li><a href="#enquiry">Book a Visit</a></li><li><a href="#">Home Loan Help</a></li><li><a href="#">NRI Services</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span class="brass">Verdant Estates Pvt. Ltd.</span> · RERA Registered · Kolkata, West Bengal</p>
+    <p>Crafted with <span class="brass">♥</span> for Kolkata's Homebuyers</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-ov" id="visitModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Schedule a Visit</div>
+    <div class="modal-sub" id="modalProp" style="color:var(--brass);font-family:'Cormorant Garamond',serif;font-size:16px;margin-bottom:20px;"></div>
+    <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+    <div class="fg-row">
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="+91"></div>
+      <div class="fg"><label>Preferred Date</label><input type="date"></div>
+    </div>
+    <div class="fg"><label>Time Slot</label><select style="background:var(--white);color:var(--ink);border-color:rgba(28,58,46,.15);"><option>Morning 10AM–12PM</option><option>Afternoon 1PM–3PM</option><option>Evening 4PM–6PM</option></select></div>
+    <div class="fg"><label>Message</label><textarea placeholder="Any specific requirements?" style="background:var(--white);color:var(--ink);border-color:rgba(28,58,46,.15);min-height:80px;"></textarea></div>
+    <button class="modal-submit" onclick="showToast('✓ Visit booked! Our team will confirm shortly.')">Confirm Site Visit 🏡</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">✓ Request submitted successfully!</div>
+
+<script>
+// Cursor
+const cur = document.getElementById('cur'), ring = document.getElementById('curRing');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX-5+'px'; cur.style.top = e.clientY-5+'px';
+  ring.style.left = e.clientX-19+'px'; ring.style.top = e.clientY-19+'px';
+});
+document.querySelectorAll('a,button,.prop-card,.why-card,.team-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.style.transform='scale(2.5)'; ring.style.transform='scale(1.4)'; });
+  el.addEventListener('mouseleave', () => { cur.style.transform='scale(1)'; ring.style.transform='scale(1)'; });
+});
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const revEls = document.querySelectorAll('.rev,.rev-l,.rev-r');
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), { threshold:.12 });
+revEls.forEach(e => obs.observe(e));
+
+// CHATBOT
+const fab = document.getElementById('chatFab'), win = document.getElementById('chatWin');
+fab.onclick = () => { win.classList.toggle('open'); document.querySelector('.chat-notif').style.display='none'; };
+document.getElementById('cwClose').onclick = () => win.classList.remove('open');
+
+const cr = {
+  'properties':'🏠 We have 6 BHK to penthouse options! From ₹78L (2BHK New Town) to ₹4.2Cr (Villa, Alipore). Which type interests you?',
+  'price':'💰 Prices range:\n• 2 BHK: ₹78L – ₹1.2Cr\n• 3 BHK: ₹1.2Cr – ₹2Cr\n• Villa/Penthouse: ₹3.6Cr–₹4.2Cr\nAll RERA verified. Want a site visit?',
+  'visit':'📅 Great! Book a free site visit by clicking "Book a Visit" above, or I can connect you to an advisor right now. What works best?',
+  'loan':'🏦 We partner with SBI, HDFC, ICICI & Axis Bank for home loans. We can get you pre-approved within 48 hours. Interested?',
+  'location':'📍 We cover Salt Lake, New Town, Alipore, Ballygunge, Rajarhat, Park Street & 8 more prime areas in Kolkata.',
+  'legal':'⚖️ All our properties are RERA registered with clear titles. Our in-house legal team verifies every document for you.',
+  'nri':'🌍 Yes! We have a dedicated NRI team. We handle remote site visits (video tours), power of attorney, and all paperwork.',
+  'default':'Thanks for reaching out! 😊 I can help you with:\n• 🏠 Property listings\n• 💰 Pricing & budget\n• 📅 Site visits\n• 🏦 Home loans\n• ⚖️ Legal help\n\nWhat would you like to know?'
+};
+
+function getReply(t){
+  const l = t.toLowerCase();
+  if(l.includes('propert')||l.includes('flat')||l.includes('house')||l.includes('home')||l.includes('bhk')) return cr.properties;
+  if(l.includes('price')||l.includes('cost')||l.includes('₹')||l.includes('budget')||l.includes('lakh')||l.includes('crore')) return cr.price;
+  if(l.includes('visit')||l.includes('tour')||l.includes('appointment')||l.includes('meet')||l.includes('book')) return cr.visit;
+  if(l.includes('loan')||l.includes('finance')||l.includes('emi')||l.includes('bank')) return cr.loan;
+  if(l.includes('location')||l.includes('area')||l.includes('where')||l.includes('kolkata')) return cr.location;
+  if(l.includes('legal')||l.includes('document')||l.includes('rera')||l.includes('paper')) return cr.legal;
+  if(l.includes('nri')||l.includes('abroad')||l.includes('foreign')) return cr.nri;
+  return cr.default;
+}
+
+function addMsg(txt,who){
+  const m = document.getElementById('chatMsgs');
+  const d = document.createElement('div'); d.className='cmsg '+who;
+  d.innerHTML = who==='bot'
+    ? `<div class="cmsg-av">🏡</div><div class="cmsg-bub">${txt.replace(/\n/g,'<br>')}</div>`
+    : `<div class="cmsg-bub">${txt}</div><div class="cmsg-av" style="background:rgba(28,58,46,.1);">👤</div>`;
+  m.appendChild(d); m.scrollTop=m.scrollHeight;
+}
+function showTypingDots(){
+  const m = document.getElementById('chatMsgs');
+  const d = document.createElement('div'); d.className='cmsg bot'; d.id='tind';
+  d.innerHTML=`<div class="cmsg-av">🏡</div><div class="cmsg-bub"><div class="typing-ind"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
+  m.appendChild(d); m.scrollTop=m.scrollHeight;
+}
+function cSend(){
+  const i = document.getElementById('chatInp');
+  const t = i.value.trim(); if(!t) return;
+  addMsg(t,'user'); i.value='';
+  document.getElementById('chatQR').style.display='none';
+  showTypingDots();
+  setTimeout(()=>{ document.getElementById('tind')?.remove(); addMsg(getReply(t),'bot'); },950);
+}
+function qSend(t){
+  addMsg(t,'user');
+  document.getElementById('chatQR').style.display='none';
+  showTypingDots();
+  setTimeout(()=>{ document.getElementById('tind')?.remove(); addMsg(getReply(t),'bot'); },900);
+}
+
+// Modal
+function openModal(prop){
+  document.getElementById('modalProp').textContent='📍 '+prop;
+  document.getElementById('visitModal').classList.add('open');
+}
+function closeModal(){ document.getElementById('visitModal').classList.remove('open'); }
+document.getElementById('visitModal').addEventListener('click',function(e){ if(e.target===this)closeModal(); });
+
+// Tab filter
+function filterTab(el,type){
+  document.querySelectorAll('.prop-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  showToast(`Showing ${type==='all'?'all':type} properties...`);
+}
+
+// Toast
+function showToast(msg){
+  closeModal();
+  const t=document.getElementById('toast');
+  t.textContent=msg||'✓ Done!';
+  t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(40px)'; },3200);
+}
+
+// Fav hearts
+document.querySelectorAll('.prop-fav').forEach(b=>{
+  b.addEventListener('click',function(e){
+    e.stopPropagation();
+    this.innerHTML=this.innerHTML.includes('far')?'<i class="fas fa-heart" style="color:#ef4444;"></i>':'<i class="far fa-heart"></i>';
+  });
+});
+
+// Mobile nav
+function mobileNav(){
+  const nl=document.querySelector('.nav-links');
+  const isOpen=nl.style.display==='flex';
+  nl.style.cssText=isOpen?'':
+    'display:flex;flex-direction:column;position:fixed;top:80px;right:0;background:rgba(250,247,242,.98);padding:32px;gap:28px;border-left:1px solid rgba(28,58,46,.1);border-bottom:1px solid rgba(28,58,46,.1);border-radius:0 0 0 16px;backdrop-filter:blur(20px);';
+  nl.querySelectorAll('a').forEach(a=>{ a.style.color='var(--forest)'; a.style.fontSize='16px'; });
+}
+</script>
+</body>
+</html>
